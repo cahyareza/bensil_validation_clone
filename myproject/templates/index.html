@@ -1,6 +1,33 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n static %}
 
 {% block content %}
-    <h1>{% trans "Hello, World!" %}</h1>
+    <div class="section">
+        <div class="container">
+            <div class="columns is-multiline">
+                <div class="column has-text-centered is-three-fifths-tablet is-offset-one-fifth-tablet is-12-mobile">
+                    <h1 class="title is-size-3-tablet is-size-4-mobile">Verifikasi Keaslian BenSil+</h1>
+                    <form action="" method="GET" novalidate>
+                          {{ form.unique }}
+
+                          {% for error in form.unique.errors %}
+                              <p class="help is-danger has-text-left">{{ error }}</p>
+                          {% endfor %}
+
+                          <p class="subtitle mt-2 has-text-left has-text-grey" style="font-size: 11px;">{{ form.unique.help_text }}</p>
+                        <button type="submit" class="button is-primary">Verifikasi</button>
+                    </form>
+                </div>
+                <div class="column has-text-centered is-three-fifths-tablet is-offset-one-fifth-tablet is-12-mobile">
+                    {% if products %}
+                    {% if unique %}
+                        <div class="subtitle has-text-primary is-size-3-tablet is-size-4-mobile">Produk tervalidasi</div>
+                    {% else %}
+                        <div class="subtitle has-text-danger is-size-3-tablet is-size-4-mobile">Produk tidak tervalidasi</div>
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

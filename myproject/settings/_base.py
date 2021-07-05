@@ -57,7 +57,7 @@ INSTALLED_APPS = [
     # third-party
     # ...
     # local
-    # ...
+    'myproject.apps.product',
 ]
 
 MIDDLEWARE = [
@@ -102,7 +102,7 @@ DATABASES = {
         'USER': get_secret('DATABASE_USER'),
         'PASSWORD': get_secret('DATABASE_PASSWORD'),
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '5433',
     }}
 
 
