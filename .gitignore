@@ -134,3 +134,4 @@ dmypy.json
 # Secrets
 secrets.json
 deployment
+dbbackup.json
