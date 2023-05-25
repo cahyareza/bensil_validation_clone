@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.db.models import Q
 from myproject.apps.product.models import ProductUnique
 from myproject.apps.product.forms import ProductValidationForm
 
@@ -9,7 +8,10 @@ def product_validator(request):
     unique = False
     if request.GET.get('unique'):
         products = ProductUnique.objects.all()
-        unique = products.filter(Q(unique__icontains=request.GET.get('unique')))
+        try:
+            unique = products.get(unique=request.GET.get('unique'))
+        except:
+            unique = False
     context = {
         "products": products,
         "unique": unique,
